@@ -6,8 +6,22 @@ spring:
   application:
     name: spring-boot-project
     version: 1.0.0
+  output.ansi.enabled: always
 
 
 default:
   age: ${random.int(10)}
   name: fudayu
+
+# error < warning < info < debug
+logging:
+  file: d:/logs/${spring.application.name}.log
+  file.max-size: 512MB
+  file.max-history: 30
+
+  level:
+    root: info
+    org.springframework.web: debug
+    org.hibernate: error
+
+
