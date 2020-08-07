@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+spring:
+  profiles: dev
+  application:
+    name: spring-boot-project
+    version: 1.0.0
+
+
+default:
+  age: ${random.int(10)}
+  name: fudayu

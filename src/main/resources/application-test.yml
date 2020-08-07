@@ -1,0 +1,8 @@
+server:
+  port: 9090
+
+spring:
+  profiles: test
+  application:
+    name: spring-boot-project
+    version: 1.0.0
