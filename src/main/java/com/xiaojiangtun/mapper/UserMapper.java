@@ -9,12 +9,10 @@ import tk.mybatis.mapper.common.BaseMapper;
 import java.util.List;
 
 /**
- * t_user 操作：演示两种方式
+ * user 操作：演示两种方式
  * <p>第一种是基于mybatis3.x版本后提供的注解方式<p/>
  * <p>第二种是早期写法，将SQL写在 XML 中<p/>
  *
- * @author Levin
- * @since 2018/5/7 0007
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
