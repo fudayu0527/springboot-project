@@ -1,5 +1,8 @@
 package com.xiaojiangtun.entity;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
+import javax.persistence.GeneratedValue;
 import java.io.Serializable;
 
 /**
@@ -10,6 +13,7 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 8655851615465363473L;
 
+    @KeySql(useGeneratedKeys = true)     //自增id回填
     private Long id;
     private String username;
     private String password;

@@ -16,7 +16,7 @@ import java.util.Arrays;
  *
  * @author fudayu
  */
-@RestController
+//@RestController
 @SpringBootApplication
 public class Application {
 
@@ -24,18 +24,18 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @GetMapping("/demo1")
-    public String demo1() {
-        return "Hello xiaojiangtun";
-    }
-
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            System.out.println("SpringBoot 默认提供的 Bean：");
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            Arrays.stream(beanNames).forEach(System.out::println);
-        };
-    }
+//    @GetMapping("/demo1")
+//    public String demo1() {
+//        return "Hello xiaojiangtun";
+//    }
+//
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//        return args -> {
+//            System.out.println("SpringBoot 默认提供的 Bean：");
+//            String[] beanNames = ctx.getBeanDefinitionNames();
+//            Arrays.sort(beanNames);
+//            Arrays.stream(beanNames).forEach(System.out::println);
+//        };
+//    }
 }
