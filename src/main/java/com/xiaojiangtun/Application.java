@@ -1,5 +1,6 @@
 package com.xiaojiangtun;
 
+import com.battcn.swagger.annotation.EnableSwagger2Doc;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,7 @@ import java.util.Arrays;
  * @author fudayu
  */
 //@RestController
+@EnableSwagger2Doc
 @SpringBootApplication
 public class Application {
 
