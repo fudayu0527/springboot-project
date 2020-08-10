@@ -17,7 +17,7 @@ spring:
 
   redis:
     host: 127.0.0.1
-    password:
+    port: 6379
     timeout: 10000           # 连接超时时间（毫秒）
     database: 0
     lettuce:
@@ -33,6 +33,15 @@ spring:
   swagger:
     base-package: com.xiaojiangtun
     enabled: true    #默认为true
+
+  #rabbitmq
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    listener.simple.acknowledge-mode: manual  # 手动ACK 不开启自动ACK模式,目的是防止报错后未正确处理消息丢失 默认 为 none
 
 ########## Mybatis 自身配置 ##########
 mybatis:

@@ -83,6 +83,18 @@
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>1.4.5-RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.46</version>
+        </dependency>
+
         <!--为了让 Spring Boot 更好的生成配置元数据文件，我们需要添加如下依赖
         （该依赖可以不添加，但是在 IDEA 和 STS 中不会有属性提示，没有提示的配置就跟你用记事本写代码一样），
         该依赖只会在编译时调用，所以不用担心会对生产造成影响-->
