@@ -43,6 +43,24 @@ spring:
     virtual-host: /
     listener.simple.acknowledge-mode: manual  # 手动ACK 不开启自动ACK模式,目的是防止报错后未正确处理消息丢失 默认 为 none
 
+
+
+    # 禁用 thymeleaf 缓存
+    thymeleaf.cache: false
+    servlet:
+      multipart:
+        enabled: true # 是否支持批量上传   (默认值 true)
+    # 上传文件的临时目录 （一般情况下不用特意修改）
+        location:
+    # 上传文件最大为 1M （默认值 1M 根据自身业务自行控制即可）
+        max-file-size: 1048576
+    # 上传请求最大为 10M（默认值10M 根据自身业务自行控制即可）
+        max-request-size: 10485760
+    # 文件大小阈值，当大于这个阈值时将写入到磁盘，否则存在内存中，（默认值0 一般情况下不用特意修改）
+        file-size-threshold: 0
+    # 判断是否要延迟解析文件（相当于懒加载，一般情况下不用特意修改）
+        resolve-lazily: false
+
 ########## Mybatis 自身配置 ##########
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
@@ -81,5 +99,6 @@ logging:
     root: info
     org.springframework.web: debug
     org.hibernate: error
+
 
 
