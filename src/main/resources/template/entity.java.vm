@@ -1,0 +1,88 @@
+package ${package.Entity};
+
+#if(${activeRecord})
+import com.baomidou.mybatisplus.activerecord.Model;
+#end
+#if(${idGenType}!="ID_WORKER")
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+#end
+import com.baomidou.mybatisplus.annotation.TableField;
+#if(${addTabeName})
+import com.baomidou.mybatisplus.annotation.TableName;
+#end
+###if(${enableSwagger})
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+###end
+import lombok.Data;
+import lombok.experimental.Accessors;
+import java.io.Serializable;
+#if(${havBigDecimal})
+import java.math.BigDecimal;
+#end
+#foreach($field in ${table.fields})
+#if(${field.type.equals("date")} || ${field.type.equals("datetime")})
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Date;
+#end
+#end
+
+/**
+ * <p>
+ * ${table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Data
+@Accessors(chain = true)
+###if(${enableSwagger})
+
+@ApiModel("${table.comment}")
+###end
+#if(${addTabeName})
+@TableName("${table.name}")
+#end
+#if(${activeRecord})
+public class ${entity} extends Model<${entity}> {
+#else
+public class ${entity} implements Serializable{
+#end
+
+    private static final long serialVersionUID=1L;
+
+#foreach($field in ${table.fields})
+#if(${field.comment.equals("")})
+#else
+    /**
+     * ${field.comment}
+     */
+#end
+#if(${field.keyFlag})
+#if(${field.keyIdentityFlag})
+    @TableId(value = "${field.name}" , type = IdType.AUTO)
+#elseif(!$null.isNull(${IdType}) && !${IdType.equals("")})
+    @TableId(value = "${field.name}")
+#elseif(${field.convert})
+    @TableId(value = "${field.name}")
+#end
+#end
+    @ApiModelProperty("${field.comment}")
+    @TableField(value = "${field.name}")
+#if(${field.type.equals("date")})
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date ${field.propertyName};
+#elseif(${field.type.equals("datetime")})
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date ${field.propertyName};
+#else
+    private ${field.propertyType} ${field.propertyName};
+
+#end
+#end
+}

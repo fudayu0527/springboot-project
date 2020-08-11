@@ -1,0 +1,91 @@
+package ${package.Controller};
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ksl.common.core.domain.TableDto;
+import com.ksl.common.core.utils.TableDtoUtils;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.*;
+import ${package.Entity}.${entity};
+import ${package.ServiceImpl}.${table.serviceImplName};
+import com.ksl.common.core.domain.Result;
+import com.ksl.common.core.web.page.TableDataInfo;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+/**
+ * <p>
+ * ${table.comment}  前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+##添加Swagger注解
+@Api("${table.comment}")
+@RestController
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/${table.entityName.toLowerCase()}")
+public class ${table.controllerName} {
+
+   @Resource
+   private ${table.serviceImplName} ${table.entityName.toLowerCase()}Service;
+
+   /**
+    * 分页获取列表
+    */
+    @GetMapping("/all")
+    public TableDto get${table.entityName}List(HttpServletRequest req) {
+          int pageNo = Integer.parseInt(req.getParameter("page"));
+          int pageSize = Integer.parseInt(req.getParameter("limit"));
+          Page ${table.entityName.toLowerCase()}Page = ${table.entityName.toLowerCase()}Service.get${table.entityName}List(pageNo,pageSize);
+          return TableDtoUtils.setTableDto(${table.entityName.toLowerCase()}Page.getTotal(),${table.entityName.toLowerCase()}Page.getRecords());
+    }
+
+   /**
+    * 根据id获取信息
+    */
+    @GetMapping("/{id}")
+    public Result<${entity}> get${table.entityName}InfoById(@PathVariable("id") Integer id) {
+          return Result.success(${table.entityName.toLowerCase()}Service.get${table.entityName}InfoById(id));
+    }
+
+   /**
+    * 根据名称获取信息
+    */
+    @GetMapping("/n")
+    public Result<${entity}> get${table.entityName}InfoById(@RequestParam("name") String name) {
+          return Result.success(${table.entityName.toLowerCase()}Service.get${table.entityName}InfoByName(name));
+    }
+
+   /**
+    * 新增
+    */
+    @PostMapping("/add")
+    public Result insert${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+          return Result.success(${table.entityName.toLowerCase()}Service.insert${table.entityName}(${table.entityName.toLowerCase()}));
+    }
+
+    /**
+     * 更新
+     */
+     @PostMapping("/update")
+     public Result update${table.entityName}(@RequestBody ${entity} ${table.entityName.toLowerCase()}) {
+          return Result.success(${table.entityName.toLowerCase()}Service.update${table.entityName}(${table.entityName.toLowerCase()}));
+     }
+
+    /**
+     * 根据id删除
+     */
+     @DeleteMapping("/{id}")
+     public Result del${table.entityName}(@PathVariable("id") Integer id) {
+          return Result.success(${table.entityName.toLowerCase()}Service.delete${table.entityName}(id));
+     }
+
+    /**
+     * 根据id列表批量删除
+     */
+     @DeleteMapping("/dels")
+     public Result del${table.entityName}List(@RequestParam("ids") List<Integer> ids) {
+        return Result.success(${table.entityName.toLowerCase()}Service.delete${table.entityName}List(ids));
+     }
+}

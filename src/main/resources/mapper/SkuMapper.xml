@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ksl.product.mapper.SkuMapper">
+
+	<resultMap id="BaseResultMap" type="com.ksl.product.entity.Sku">
+		<id column="sku_code" property="skuCode" />
+		<result column="sku_name" property="skuName" />
+		<result column="sku_cover" property="skuCover" />
+		<result column="brand" property="brand" />
+		<result column="category" property="category" />
+		<result column="main_material" property="mainMaterial" />
+		<result column="supplier" property="supplier" />
+		<result column="principal" property="principal" />
+		<result column="process_type" property="processType" />
+		<result column="selling_method" property="sellingMethod" />
+		<result column="sales_platform" property="salesPlatform" />
+		<result column="theme_elements" property="themeElements" />
+		<result column="subdivided_elements" property="subdividedElements" />
+		<result column="scenes" property="scenes" />
+		<result column="gender" property="gender" />
+		<result column="product_desc" property="productDesc" />
+		<result column="remark" property="remark" />
+		<result column="create_by" property="createBy" />
+		<result column="create_time" property="createTime" />
+		<result column="update_by" property="updateBy" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        sku_code, sku_name, sku_cover, brand, category, main_material, supplier, principal, process_type, selling_method, sales_platform, theme_elements, subdivided_elements, scenes, gender, product_desc, remark, create_by, create_time, update_by, update_time
+    </sql>
+</mapper>

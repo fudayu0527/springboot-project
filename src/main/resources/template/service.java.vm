@@ -1,0 +1,66 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import java.util.List;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
+/**
+ * <p>
+ * 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+    /**
+     * 根据${table.entityName}的id获取当前对象
+     * @param id
+     * @return ${table.entityName}
+     */
+    ${entity} get${table.entityName}InfoById(Integer id);
+
+    /**
+    * 根据${table.entityName}的名称获取当前对象
+    * @param ${table.entityName.toLowerCase()}Name
+    * @return ${table.entityName}
+    */
+    ${entity} get${table.entityName}InfoByName(String ${table.entityName.toLowerCase()}Name);
+
+    /**
+    * 修改
+    * @param ${table.entityName.toLowerCase()}
+    * @return  true代表更新成功  false代表更新失败
+    */
+    boolean update${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+
+    /**
+    * 新增
+    * @param ${table.entityName.toLowerCase()}
+    * @return true代表新增成功  false代表新增失败
+    */
+    boolean insert${table.entityName}(${entity} ${table.entityName.toLowerCase()});
+
+    /**
+    * 删除
+    * @param id
+    * @return true代表删除成功  false代表删除失败
+    */
+    boolean delete${table.entityName}(Integer id);
+
+    /**
+    * 批量删除
+    * @param ids 要删除的集合列表
+    * @return true代表删除成功  false代表删除失败
+    */
+    boolean delete${table.entityName}List(List<Integer> ids);
+
+    /**
+    * 分页查询
+    * @param pageNo  页数
+    * @param size    一页最大的条数
+    * @return  Page<${table.entityName}>
+    */
+    Page get${table.entityName}List(Integer pageNo, Integer size);
+}
