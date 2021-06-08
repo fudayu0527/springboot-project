@@ -1,4 +1,4 @@
-package com.xiaojiangtun.Controller;
+package com.xiaojiangtun.controller;
 
 import com.battcn.swagger.properties.ApiDataType;
 import com.battcn.swagger.properties.ApiParamType;

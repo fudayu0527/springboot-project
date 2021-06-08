@@ -1,4 +1,4 @@
-package com.xiaojiangtun.Controller;
+package com.xiaojiangtun.controller;
 
 import com.xiaojiangtun.exception.CustomException;
 import org.springframework.web.bind.annotation.GetMapping;
