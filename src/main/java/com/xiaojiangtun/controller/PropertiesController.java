@@ -1,4 +1,4 @@
-package com.xiaojiangtun.Controller;
+package com.xiaojiangtun.controller;
 
 import com.xiaojiangtun.config.DefaultProperties;
 import com.xiaojiangtun.config.MyProperties;
