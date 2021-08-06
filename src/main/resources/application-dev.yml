@@ -43,7 +43,18 @@ spring:
     virtual-host: /
     listener.simple.acknowledge-mode: manual  # 手动ACK 不开启自动ACK模式,目的是防止报错后未正确处理消息丢失 默认 为 none
 
-
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      appname: mall-portal-executor
+      address:
+      ip:
+      logpath: ./logs/jobhandler
+      logretentiondays: 5
+      port: 8105
 
     # 禁用 thymeleaf 缓存
     thymeleaf.cache: false
@@ -82,6 +93,7 @@ pagehelper:
   params: count=countSql
   reasonable: false
   support-methods-arguments: true
+
 
 
 
